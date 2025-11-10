@@ -253,7 +253,11 @@ db_content <- div(
                            onclick = "window.open('https://wirtschaftsbarometer.tg.ch/', '_blank')"),
               actionButton("btn_glossar_kt", "Glossar",
                            class = "btn btn-outline-secondary info-button",
-                           onclick = "window.open('https://statistik.tg.ch/glossar/glossar.html/6736', '_blank')")
+                           onclick = "window.open('https://statistik.tg.ch/glossar/glossar.html/6736', '_blank')"),
+              actionButton("btn_github_kt",
+                           HTML('<i class="fab fa-github"></i> Github'),
+                           class = "btn btn-outline-secondary info-button",
+                           onclick = "window.open('https://github.com/ogdtg/branchenapp', '_blank')")
 
           )
         )
@@ -312,7 +316,11 @@ db_content <- div(
                              onclick = "window.open('https://wirtschaftsbarometer.tg.ch/', '_blank')"),
                 actionButton("btn_glossar_gewerbe", "Glossar",
                              class = "btn btn-outline-secondary info-button",
-                             onclick = "window.open('https://statistik.tg.ch/glossar/glossar.html/6736', '_blank')")
+                             onclick = "window.open('https://statistik.tg.ch/glossar/glossar.html/6736', '_blank')"),
+                actionButton("btn_github_gewerbe",
+                             HTML('<i class="fab fa-github"></i> Github'),
+                             class = "btn btn-outline-secondary info-button",
+                             onclick = "window.open('https://github.com/ogdtg/branchenapp', '_blank')")
 
             )
           )
@@ -385,8 +393,11 @@ db_content <- div(
                            onclick = "window.open('https://wirtschaftsbarometer.tg.ch/', '_blank')"),
               actionButton("btn_glossar_bezirke", "Glossar",
                            class = "btn btn-outline-secondary info-button",
-                           onclick = "window.open('https://statistik.tg.ch/glossar/glossar.html/6736', '_blank')")
-
+                           onclick = "window.open('https://statistik.tg.ch/glossar/glossar.html/6736', '_blank')"),
+              actionButton("btn_github_bezirke",
+                           HTML('<i class="fab fa-github"></i> Github'),
+                           class = "btn btn-outline-secondary info-button",
+                           onclick = "window.open('https://github.com/ogdtg/branchenapp', '_blank')")
           )
         )
       )
@@ -458,7 +469,11 @@ db_content <- div(
                            onclick = "window.open('https://wirtschaftsbarometer.tg.ch/', '_blank')"),
               actionButton("btn_glossar_gemeinden", "Glossar",
                            class = "btn btn-outline-secondary info-button",
-                           onclick = "window.open('https://statistik.tg.ch/glossar/glossar.html/6736', '_blank')")
+                           onclick = "window.open('https://statistik.tg.ch/glossar/glossar.html/6736', '_blank')"),
+              actionButton("btn_github_gemeinden",
+                           HTML('<i class="fab fa-github"></i> Github'),
+                           class = "btn btn-outline-secondary info-button",
+                           onclick = "window.open('https://github.com/ogdtg/branchenapp', '_blank')")
 
           )
         )
