@@ -3,8 +3,6 @@ Die Thurgauer Branchen-App ist eine interaktive Visualisierung der Branchenstruk
 
 # Testing
 Kann mit 
-```
-runGitHub( "stat-frei/branchenapp", "<your user name>")
-```
-ausgeführt werden
+```runGitHub( "stat-frei/branchenapp", "<your user name>")```
+ausgeführt werden.
 
