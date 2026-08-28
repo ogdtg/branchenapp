@@ -1,0 +1,1001 @@
+/* ========================================
+   BASIC STYLING
+   ======================================== */
+
+/* Logo Container */
+.skin-blue .main-header .logo {
+  background-color: #ffffff !important;
+  color: black;
+  font-family: akzidenz-grotesk, 'Helvetica Neue', Helvetica, Arial, Geneva, sans-serif;
+  font-weight: bold;
+  height: 86px !important;
+  width: 100% !important; /* Take full width of container */
+  padding: 0 !important;
+  margin: 0 !important;
+  position: relative !important;
+  z-index: 1032 !important; /* Above navbar */
+}
+
+.navbar-brand,
+.brand-link,
+.main-header .navbar-brand,
+.main-header .brand-link {
+  margin-left: 10px !important;
+  padding-left: 0 !important;
+  padding-top: 22px !important;
+  max-width: calc(100% - 300px) !important; /* Adjust based on logo width */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  float: left;
+  height: 86px;
+  line-height: 86px;
+}
+
+/* Ensure title stays within bounds */
+.navbar-brand,
+.brand-link {
+  margin-left: 20px !important;
+  margin-right: auto !important;  /* Don't let it overflow right */
+  max-width: calc(100% - 200px) !important;  /* Leave space for logo */
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+/* Title Styling - Fixed and Comprehensive */
+.navbar-brand,
+.brand-link,
+.main-header .navbar-brand .brand-text,
+.main-header .brand-link .brand-text,
+.brand-text.font-weight-light,
+.main-header a.brand-link span {
+  font-size: 17px !important;
+  color: #000000 !important;
+  font-weight: 700 !important;
+  font-family: akzidenz-grotesk, 'Helvetica Neue', Helvetica, Arial, Geneva, sans-serif !important;
+}
+
+/* Override bs4Dash font-weight-light class */
+.font-weight-light {
+  font-weight: 700 !important;
+}
+
+.skin-blue .left-side, .skin-blue .main-sidebar, .skin-blue .wrapper {
+  background-color: #eeeded;
+}
+
+.wrapper {
+  background-color: #ffffff !important;
+  padding: 0 !important;
+}
+
+html {
+  background-color: #ffffff !important;
+}
+
+/* Font families */
+body, h1, h2, h3, h4, h5, h6, p, .selectize-input, .selectize-dropdown, .navbar, .sidebar, .selectize-dropdown-content {
+  font-family: Arial, sans-serif !important;
+}
+
+h3, h2 {
+  font-weight: bold;
+}
+
+a {
+  color: #367d32;
+}
+
+/* Button section container */
+.button-section-container {
+  margin-top: 0px;
+  padding: 10px;
+  background-color: #ffffff;
+}
+
+/* Title styling */
+.button-section-title {
+  margin-bottom: 10px;
+  color: #495057;
+  font-weight: 600;
+  font-size: 14px;
+  text-align: right;
+}
+
+/* Button group container */
+.button-group-horizontal {
+  display: flex;
+  gap: 2px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+/* Individual button styling */
+.info-button {
+  font-size: 13px !important;
+  padding: 5px 10px !important;
+  border-radius: 0px !important;
+  transition: all 0.2s ease !important;
+  min-width: 120px;
+  background-color: #eeeded;
+  color: #696969;
+  border: 0px;
+}
+
+.info-button:last-child {
+  margin-right: 0; /* Remove margin from the last button */
+}
+
+/* Hover effects */
+.info-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(122, 122, 122, 0.2);
+  background-color: #72a536 !important; 
+  color: #ffffff !important; 
+}
+
+
+/* ========================================
+   HEADER STYLING
+   ======================================== */
+
+   
+/* Main header styling */
+.skin-blue .main-header {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  width: 100% !important;
+  position: fixed !important;
+  z-index: 1030;
+  padding-bottom: 63px !important;
+  left: 0;
+  right: 0;
+  transform: none !important;
+  background-color: #ffffff;
+}
+
+.skin-blue .main-header .logo:hover {
+  background-color: #ffffff;
+}
+
+/* Navbar */
+.skin-blue .main-header .navbar {
+  background-color: #eeeded !important;
+  color: #575757;
+  width: 100% !important;
+  clear: both;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box;
+  position: relative !important;
+  top: 0 !important;
+  z-index: 1031 !important;
+  height: 45px !important; /* Exact same height as buttons */
+  overflow: hidden !important; /* Prevent any overflow */
+}
+
+.main-header .navbar {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box;
+  height: 45px !important; /* Exact same height as buttons */
+  overflow: hidden !important; /* Prevent any overflow */
+}
+
+/* Logo positioning */
+.dropdown {
+  position: absolute !important;
+  right: 16px !important; /* JavaScript will handle this positioning */
+  top: 18px !important;
+  z-index: 1033 !important; /* Above everything */
+}
+
+.dropdown a {
+  position: relative;
+  top: -7px !important;
+}
+
+img.logoTg {
+  height: 60px;
+  padding-right: 0px;
+  position: absolute !important;
+  right: 0px !important; /* JavaScript will handle this positioning */
+  top: 13px !important;
+  z-index: 1033 !important; /* Above everything */
+}
+
+/* ========================================
+   SIDEBAR STYLING
+   ======================================== */
+
+.sidebar {
+  color: #367d32;
+  padding-top: 40px;
+}
+
+.skin-blue .main-sidebar {
+  background-color: #ffffff;
+  padding-top: 140px;
+}
+
+/* Sidebar menu styling */
+.skin-blue .main-sidebar .sidebar .sidebar-menu .active a {
+  background-color: #ffffff;
+  color: #000000;
+  border-left-color: #367d32;
+}
+
+.skin-blue .main-sidebar .sidebar .sidebar-menu a {
+  background-color: #ffffff;
+  color: #367d32;
+}
+
+.skin-blue .main-sidebar .sidebar .sidebar-menu a:hover {
+  background-color: #ffffff;
+  color: #000000;
+  border-left-color: #367d32;
+}
+
+/* Toggle buttons */
+.skin-blue .main-header .navbar .sidebar-toggle:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.skin-blue .main-header .navbar .sidebar-toggle {
+  color: #575757;
+}
+
+/* ========================================
+   CONTENT AND LAYOUT
+   ======================================== */
+
+/* Body adjustment for fixed navbar */
+body {
+  padding-top: 0px !important; 
+  background-color: #ffffff !important;
+}
+
+/* Content wrapper */
+.skin-blue .content-wrapper {
+  padding-top: 90px;
+  background-color: #ffffff;
+}
+
+.content-wrapper {
+  background-color: #ffffff !important;
+  max-width: 1200px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-top: 30px !important;
+  padding-top: 0px !important;
+}
+
+.tab-content > .active {
+  display: block;
+  padding-top: 50px;
+}
+
+/* Layout spacing */
+#jahr-label {
+  color: #367d32;
+}
+
+.content-div {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+#plot {
+  z-index: 9;
+}
+
+container {
+  background-color: transparent;
+}
+
+#gh_button {
+  background-color: black;
+  color: white;
+  border-color: white;
+}
+
+/* Content spacing */
+.custom-navbar-container ~ div {
+  margin-top: 20px !important;
+}
+
+.help-icon {
+  cursor: help;
+  color: #666;
+  margin-left: 5px;
+  font-size: 12px;
+}
+.help-icon:hover {
+  color: #337ab7;
+}
+
+.lesebeispiel {
+  margin-bottom: 0px;
+  margin-left: 5px;
+  padding: 0px;
+  padding-top: 15px !important; 
+  padding-bottom: 3px !important; 
+  background-color: #ffffff;
+}
+
+.lesebeispiel p {
+  margin: 0;
+  color: #51585e;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.chart-description {
+  margin-bottom: 0px;
+  margin-left: 5px;
+  padding: 0px;
+  padding-top: 43px !important; 
+  background-color: #ffffff;
+}
+
+.chart-description h4 {
+  margin-top: 10px;
+  margin-bottom: 8px;
+  color: black;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.chart-description p {
+  margin: 0;
+  color: #51585e;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.lesebeispiel .secondp  {
+  margin: 0 !important;
+  color: #51585e;
+  font-size: 14px;
+  line-height: 1.5;
+  padding-top: 0px !important;
+}
+
+.lesebeispiel ul {
+  margin: 0 !important;
+  padding-top: 7px !important; 
+  padding-bottom: 7px !important; 
+}
+
+.lesebeispiel li {
+  margin: 0 !important;
+  color: #51585e !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  padding-bottom: 0px !important; 
+}
+
+
+.gewerbe_zoom p{
+  margin-top: 25px !important;
+  color: #8f8f8f  !important;
+  font-size: 18px !important;
+  font-weight: 600;
+  line-height: 1.5 !important;
+  margin-left: 5px;
+  margin-bottom: 3px !important;
+  padding-bottom: 0px !important;
+}
+
+.gewerbe_zoom hr{
+  color: #bebebe  !important;
+  background-color:#bebebe ;
+  height:1px;
+  margin-left: 5px;
+  margin-bottom: 30px !important;
+  margin-top: 0px !important;
+}
+
+
+.chart-description-select {
+  margin-bottom: 0px;
+  margin-left: 5px;
+  padding: 0px;
+  padding-top: 0px !important; 
+  background-color: #ffffff;
+}
+
+.chart-description-select h4 {
+  margin-top: 10px;
+  margin-bottom: 8px;
+  color: black;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.chart-description-select p {
+  margin: 0;
+  color: #51585e;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+
+
+
+/* ========================================
+   Costom Text Options
+   ======================================== */
+
+
+.custom-navbar-container::before {
+  content: "Thurgauer Branchen-App";
+  display: block;
+  padding: 0px 0px 10px 2px;
+  font-size: 26px;
+  color: #000000;
+  font-weight: bold;
+  background-color: #ffffff;
+}
+
+
+/* ========================================
+   GRID STYLING
+   ======================================== */
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 7px;
+  justify-items: center;
+  align-items: center;
+  width: 100%;
+}
+
+.grid-container img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  object-position: 0 -2px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.grid-container img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ========================================
+   BOXES AND COMPONENTS
+   ======================================== */
+
+.small-box.bg-olive {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  text-align: left !important;
+  border-bottom: 5px solid #72a536;
+  border-left: 1px solid #72a536;
+  border-top: 1px solid #72a536;
+  border-right: 1px solid #72a536;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.small-box {
+  font-weight: bold !important;
+  font-size: 150%;
+  background-color: #327a1e !important;
+}
+
+.small-box-subtitle {
+  font-weight: normal !important;
+}
+
+/* Info popover */
+.infoPopover {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.infoPopover .fa-regular,
+.infoPopover .far {
+  color: white;
+}
+
+.infoPopover:hover {
+  background-color: transparent !important;
+  border-color: white !important;
+}
+
+/* ========================================
+   BS4DASH SPECIFIC STYLING
+   ======================================== */
+
+.main-header {
+  box-shadow: 0 5px 0 #ffec00, 0px 10px 0px #adc427, 0px 15px 0px #72a536, 0px 20px 0px #00a4e8, 0px 30px 0px #4ab1eb;
+  background-color: #ffffff !important; /* Ensure white background */
+  height: auto !important; /* Let it size to content */
+  min-height: 86px !important; /* Your logo height */
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.main-header * {
+  box-sizing: border-box !important;
+}
+
+/* Header constraint container (created by JavaScript) */
+.header-constraint {
+  background-color: #ffffff !important; /* Ensure white background */
+}
+
+/* Sidebar styling */
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active, 
+.sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active {
+  background-color: #327a1e;
+  color: white;
+}
+
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active:hover, 
+.sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active:hover {
+  background-color: #327a1e;
+  color: white;
+}
+
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link, 
+.sidebar-light-primary .nav-sidebar > .nav-item > .nav-link {
+  color: black;
+}
+
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link:hover, 
+.sidebar-light-primary .nav-sidebar > .nav-item > .nav-link:hover {
+  color: #327a1e;
+  background-color: #eeeded;
+}
+
+/* Dropdown styling */
+.dropdown, .dropleft, .dropright, .dropup {
+  color: transparent;
+}
+
+/* ========================================
+   CUSTOM NAVBAR STYLING
+   ======================================== */
+
+/* Main navbar container */
+.navbar-nav {
+  background-color: #eeeded !important;
+  border-radius: 0px !important;
+  padding: 0px !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  height: 45px !important; /* Exact same height as buttons */
+  width: 100% !important;
+  position: relative !important;
+  z-index: 1031 !important;
+  overflow: hidden !important; /* Prevent any overflow */
+  line-height: 45px !important; /* Match the height */
+}
+
+/* Individual navbar items */
+.navbar-nav .nav-item {
+  margin: 0 -0.5px;
+}
+
+/* Navbar links styling */
+.navbar-nav .nav-item .nav-link {
+  font-size: 13px !important;
+  font-weight: bold;
+  color: #696969 !important;
+  text-decoration: none;
+  background-color: #eeeded;
+  border-left: 2px solid #ffffff !important;
+  border-right: 2px solid #ffffff !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  border-radius: 0px !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+  height: 45px !important; /* Exact height */
+  padding: 0px 16px !important; /* Remove vertical padding */
+  margin: 0 !important;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  white-space: nowrap;
+  line-height: 45px !important; /* Match the height */
+}
+
+/* Navbar hover effects */
+.navbar-nav .nav-item .nav-link:hover {
+  background-color: #eeeded !important;
+  border-left: 2px solid #ffffff !important;
+  border-right: 2px solid #ffffff !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  color: #000000 !important;
+  transform: translateY(-2px);
+}
+
+/* Navbar active/focused state */
+.navbar-nav .nav-item .nav-link:focus,
+.navbar-nav .nav-item .nav-link:active,
+.navbar-nav .nav-item .nav-link.active-tab {
+  background-color: #ffffff !important;
+  border-left: 2px solid #ffffff !important;
+  border-right: 2px solid #ffffff !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  color: #72a536 !important;
+  text-decoration: underline !important;
+  outline: none;
+}
+
+/* Icon styling within navbar */
+.navbar-nav .nav-item .nav-link i {
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+/* ========================================
+   HEADER CLEANUP - REMOVE UNWANTED ELEMENTS
+   ======================================== */
+
+/* Hide default bs4Dash header navigation elements */
+.main-header .navbar-nav .nav-item .nav-link[data-widget="pushmenu"],
+.main-header .navbar-nav .nav-item .nav-link[data-widget="control-sidebar"],
+.main-header .navbar-nav .nav-item .nav-link[data-toggle="control-sidebar"] {
+  display: none !important;
+}
+
+/* Hide sidebar toggle button */
+.main-header .navbar .sidebar-toggle {
+  display: none !important;
+}
+
+/* Hide ghost navbar object on the left */
+.main-header .navbar-nav:not(.ml-auto) {
+  display: none !important;
+}
+
+/* Hide any remaining empty or unwanted navbar items */
+.main-header .navbar-nav .nav-item:empty,
+.main-header .navbar-nav .nav-item:not(:has(.nav-link[onclick*="navbar_tab"])),
+.main-header .navbar-nav .nav-item .nav-link:empty,
+.main-header .navbar-nav .nav-item .nav-link:not([onclick]),
+.main-header .navbar-nav .nav-item:has(.nav-link:empty) {
+  display: none !important;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+   @media (max-width: 1200px) {
+    .skin-blue .main-header {
+      padding-left: 15px;
+      padding-right: 15px;
+    }    
+    .navbar-brand,
+    .brand-link {
+      max-width: calc(100% - 250px) !important;
+    }
+  }
+
+@media (max-width: 900px) {
+  /* Stack navbar items vertically */
+  .navbar-nav {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    max-width: 300px;
+    padding: 0px !important;
+    height: auto !important;
+    background-color: #ffffff !important;
+    position: relative !important;
+    z-index: 9999 !important;
+  }
+  
+  .navbar-nav .nav-item {
+    margin: 0px 0;
+    width: 100%;
+  }
+  
+  .navbar-nav .nav-item .nav-link {
+    width: 100%;
+    min-width: auto;
+    text-align: left !important;
+    justify-content: flex-start !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-top: 2px solid #ffffff !important;
+    border-bottom: 2px solid #ffffff !important;
+  }
+
+  .navbar-nav .nav-item .nav-link:hover {
+    background-color: #eeeded !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-top: 2px solid #ffffff !important;
+    border-bottom: 4px solid #ffffff !important;
+    color: #000000 !important;
+    transform: translateY(-2px);
+  }
+
+  .custom-navbar-container {
+    position: relative !important;
+    z-index: 9999 !important;
+  }
+  
+  .content-wrapper {
+    margin-top: 30px !important;
+  }
+  
+  .custom-navbar-container ~ div {
+    margin-top: 20px !important;
+  }
+}
+
+/* ========================================
+   RESPONSIVE DESIGN - SIMPLIFIED MOBILE STYLES
+   ======================================== */
+
+   @media (max-width: 767px) {
+    .skin-blue .main-header .logo {
+      width: 100%;
+      max-width: 100%;
+      text-align: center !important;
+      float: none;
+      margin-left: 0;
+      height: auto !important;
+      min-height: 60px !important;
+      padding: 5px !important;
+      position: relative !important;
+    }
+    
+    /* Hide the text completely on mobile */
+    .navbar-brand,
+    .brand-link {
+      display: none !important;
+    }
+    
+    /* Make logo bigger and position it with right spacing */
+    img.logoTg {
+      position: absolute !important;
+      top: 70% !important; /* Moved down from 50% */
+      right: 20px !important; /* 20px space from right edge */
+      transform: translateY(-50%) !important;
+      display: block;
+      margin: 0 !important;
+      padding-right: 0;
+      height: 50px !important; /* Bigger logo */
+      width: auto !important;
+    }
+    
+    /* Position dropdown with right spacing */
+    .dropdown {
+      position: absolute !important;
+      right: 20px !important; /* 20px space from right edge */
+      top: 70% !important; /* Moved down from 50% */
+      transform: translateY(-50%) !important;
+      margin: 0 !important;
+      float: none !important;
+      text-align: center;
+    }
+    
+    /* Adjust main header for mobile */
+    .skin-blue .main-header {
+      height: auto !important;
+      min-height: 70px !important;
+      padding: 5px !important;
+    }
+    
+    div[style*="display: flex; justify-content: space-between"] {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: stretch !important;
+      margin-bottom: 15px !important;
+      gap: 15px !important;
+    }
+    
+    /* Select container goes to top, full width */
+    .select-container {
+      flex: 1 1 auto !important;
+      width: 100% !important;
+      margin-right: 0 !important;
+      order: 1 !important; /* Ensure it's first */
+    }
+    
+    /* Select input takes full width */
+    .select-container select {
+      width: 100% !important;
+    }
+    
+    /* Button container goes below, full width */
+    div[style*="flex: 0 0 auto"] {
+      flex: 1 1 auto !important;
+      width: 100% !important;
+      display: flex !important;
+      flex-wrap: wrap !important;
+      gap: 8px !important;
+      justify-content: center !important;
+      order: 2 !important; /* Ensure it's second */
+    }
+    
+    /* Buttons stack nicely on mobile */
+    .nav-button {
+      flex: 1 1 auto !important;
+      min-width: 120px !important;
+      max-width: 200px !important;
+      margin: 0 !important;
+    }
+
+  }
+  
+  @media (max-width: 480px) {
+    .skin-blue .main-header .logo {
+      min-height: 50px !important;
+      padding: 3px !important;
+    }
+    
+    /* Keep text hidden */
+    .navbar-brand,
+    .brand-link {
+      display: none !important;
+    }
+    
+    /* Slightly smaller logo for very small screens but still bigger than before */
+    img.logoTg {
+      height: 45px !important;
+      right: 15px !important; /* 15px space from right edge */
+      top: 70% !important; /* Keep moved down position */
+    }
+    
+    .dropdown {
+      right: 15px !important; /* 15px space from right edge */
+      top: 70% !important; /* Keep moved down position */
+    }
+    
+    .skin-blue .main-header {
+      min-height: 60px !important;
+      padding: 3px !important;
+    }
+    
+    /* Make navbar buttons smaller on very small screens */
+    .nav-button {
+      font-size: 10px !important;
+      min-width: 100px !important;
+      height: 32px !important;
+      padding: 6px 8px !important;
+    }
+    
+    /* Reduce custom navbar container title size */
+    .custom-navbar-container::before {
+      font-size: 18px !important;
+      padding: 0px 0px 8px 2px !important;
+    }
+    div[style*="flex: 0 0 auto"] {
+      flex-direction: column !important;
+      gap: 10px !important;
+    }
+    
+    .nav-button {
+      width: 100% !important;
+      max-width: none !important;
+      min-width: auto !important;
+    }
+  }
+
+/* ========================================
+   FORCE OVERRIDES
+   ======================================== */
+
+/* Force logo size on all screens */
+.skin-blue .main-header .logo {
+  height: 86px !important;
+}
+
+.nav-button {
+  font-family: Arial, sans-serif;
+  color: #696969;
+  margin-right: 2px;
+  font-weight: 600;
+  font-size: 12px;
+  transition: all 0.3s ease;
+  border-radius: 0; /* Sharp corners */
+  min-width: 140px; /* Minimum width to accommodate longest text */
+  height: 38px; /* Fixed height */
+  padding: 8px 12px !important; /* Consistent padding */
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+  background-color: #eeeded;
+  border: 0px;
+}
+
+.nav-button:last-child {
+  margin-right: 0; /* Remove margin from the last button */
+}
+
+.nav-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(122, 122, 122, 0.2);
+  border-color: #72a536 !important; /* Green border on hover */
+  color: #72a536 !important; /* Green text on hover for outline buttons */
+}
+
+.nav-button:hover.btn-primary {
+  background-color: #72a536 !important; /* Green background on hover for primary buttons */
+  border-color: #72a536 !important;
+}
+
+/* Active button styling (green) */
+.nav-button.btn-primary {
+  background-color: #72a536 !important; /* Green active button */
+  border-color: #72a536 !important;
+  color: white !important; /* Ensure white text */
+}
+
+/* Fix focus state for primary buttons to maintain white text */
+.nav-button.btn-primary:focus {
+  background-color: #72a536 !important;
+  border-color: #72a536 !important;
+  color: white !important; /* Keep white text when focused */
+}
+
+.nav-button.btn-outline-primary {
+  border-color: #eeeded; /* Default border for inactive outline buttons */
+}
+
+.nav-button.btn-outline-primary:hover {
+  background-color: #72a536 !important; /* Green background on hover */
+  border-color: #72a536 !important;
+  color: white !important;
+}
+
+/* Fix focus state for outline buttons */
+.nav-button.btn-outline-primary:focus {
+  border-color: #eeeded !important;
+  color: #6c757d !important; /* Default text color */
+  background-color: transparent !important;
+}
+
+
+.select-container {
+  flex: 0 0 200px; /* Fixed width for select */
+}
+
+/* Additional styling for the select input */
+.select-container .form-group {
+  margin-bottom: 0; /* Remove default margin */
+}
+
+.select-container label {
+  font-weight: 500;
+  font-size: 12px;
+  color: #333;
+  margin-bottom: 0px;
+}
+
+.select-container select {
+  border-radius: 0;
+  border: 1px solid #eeeded;
+  font-size: 11px;
+  padding: 0px 0px !important;
+}
+
+.navbar-nav.ml-auto.navbar-right {
+  display: none !important;
+}
