@@ -1,3 +1,31 @@
+# Formats a number in Swiss/German style, e.g. 1234.5 -> "1'234,5"
+format_ch_number <- function(x, digits = 0) {
+  formatC(round(x, digits), format = "f", digits = digits, big.mark = "'", decimal.mark = ",")
+}
+
+capitalize_first <- function(x) {
+  paste0(toupper(substring(x, 1, 1)), substring(x, 2))
+}
+
+# Builds the "Lesebeispiel" text for the Kanton bubble chart based on the
+# actual largest branch in `data`, so the text stays correct every year
+# without manual edits (data must have columns name, current, x, y, z).
+render_lesebeispiel_tg <- function(data, max_year, min_year) {
+  top <- data[order(-data$z), ][1, ]
+
+  growth_direction <- if (top$y >= 0) "stark gewachsen" else "zurückgegangen"
+  vertretung <- if (top$x > 1) "überdurchschnittlich" else "unterdurchschnittlich"
+  growth_sign <- if (top$y >= 0) "+" else ""
+
+  HTML(paste0(
+    '<p>Die Visualisierung zeigt, </p><ul><li>welches die <strong>grössten</strong> Branchen im Kanton Thurgau sind (Je grösser der Bubble, desto mehr Beschäftigte arbeiten in der Branche. Die drei grössten Branchen sind schwarz umrandet.)</li>
+        <li>welches die <strong>wachstumsstärksten</strong>  Branchen im Kanton Thurgau sind (Je weiter oben der Bubble, desto stärker ist die Branche in den letzten Jahren gewachsen.)</li>
+        <li>welches die Branchen sind, die im Kanton Thurgau <strong>vergleichsweise stark vertreten</strong> sind (Je weiter rechts der Bubble, desto stärker ist die Branche im Vergleich zur Schweiz vertreten. Ein Standortquotienten von über 1 bedeutet: In dieser Branche arbeiten im Kanton Thurgau verhältnismässig mehr Beschäftigte als in der Gesamtschweiz).</li></ul>
+        <p class="secondp">Im <strong>oberen rechten Quadranten</strong> sind die <strong>Wachstumsbranchen</strong> dargestellt, die im Kanton Thurgau im Vergleich zur Gesamtschweiz <strong>stärker vertreten</strong> sind.</p><br>
+        <p><strong>Lesebeispiel:</strong> Die Branche «', capitalize_first(top$name), '» im Kanton Thurgau hatte im Jahr ', max_year, ' ', format_ch_number(top$current), ' Beschäftigte. Sie gehört zu den drei grössten Branchen im Thurgau (grosser Bubble, schwarz umrandet). Sie ist in den letzten Jahren ', growth_direction, ' (', growth_sign, format_ch_number(top$y, 1), ' % im Schnitt der Jahre ', min_year, '-', max_year, '). Im Vergleich zur Gesamtschweiz arbeiten im Thurgau ', vertretung, ' viele Beschäftigte in dieser Branche (Standortquotient von ', format_ch_number(top$x, 2), ').</p>'
+  ))
+}
+
 init_header <- function(dashboard_title, reference='https://statistik.tg.ch'){
   bs4Dash::dashboardHeader(
     title = bs4Dash::dashboardBrand(

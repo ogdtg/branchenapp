@@ -1,14 +1,12 @@
 rm(list=ls())
 
 # Source all R files from the R directory
-sapply(list.files("/r-proj/stat/ogd/branchenstruktur/Beschäftigte nach NOGA nach Gemeinde/App/R/",
-                  pattern = "\\.R$", full.names = TRUE), source)
+sapply(list.files("R/", pattern = "\\.R$", full.names = TRUE), source)
 
-daten_kanton <- read_xlsx("Daten/daten_kanton_use.xlsx")
-daten_bezirk <- read_xlsx("Daten/daten_bezirk_use.xlsx")
-daten_gemeinde <- read_xlsx("Daten/daten_gemeinde_use.xlsx",
-                            col_types = c("numeric", "text", "text", "text", "text", "numeric", "numeric", "numeric"))
-daten_sectorC <- read_xlsx("Daten/daten_sectorC_use.xlsx")
+daten_kanton <- readRDS("Daten/daten_kanton_use.rds")
+daten_bezirk <- readRDS("Daten/daten_bezirk_use.rds")
+daten_gemeinde <- readRDS("Daten/daten_gemeinde_use.rds")
+daten_sectorC <- readRDS("Daten/daten_sectorC_use.rds")
 
 # Define years for use in UI
 max_year <- max(daten_kanton$jahr, na.rm = TRUE)

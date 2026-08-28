@@ -1,16 +1,12 @@
+# This script rebuilds the app's data files and must be run once whenever the
+# underlying OGD (Open Government Data) source datasets are updated.
+# It writes:
+#  - Daten/*_use.rds     -> fast-loading data used by the Shiny app itself
+#  - Daten/*.xlsx        -> nicely formatted workbooks offered for download in the app
+
 # Load all necessary packages
 library(dplyr)
 library(stringr)
-library(shiny)
-library(bs4Dash)
-library(shinyjs)
-library(highcharter)
-library(ggplot2)
-library(shinybrowser)
-library(fontawesome)
-library(bslib)
-library(memoise)
-library(shinythemes)
 library(tgAPI)
 library(BFS)
 library(readxl)
@@ -194,24 +190,24 @@ df_angestellte_tg_c$jahr <- as.numeric(df_angestellte_tg_c$jahr)
 df_angestellte_tg_section_tg_xlsx <- df_angestellte_tg_section_tg %>%
   select(jahr,noga_section_code,noga_section_text_lower,beschaeftigte_total,Standortquotient_tg,zehn_jahr_wachstum_tg)
 
-write.xlsx(df_angestellte_tg_section_tg_xlsx, "Daten/daten_kanton_use.xlsx")
+saveRDS(df_angestellte_tg_section_tg_xlsx, "Daten/daten_kanton_use.rds")
 
 df_angestellte_tg_section_bezirke_xlsx <- df_angestellte_tg_section_bezirk %>%
   select(jahr,bezirk, noga_section_code,noga_section_text_lower,beschaeftigte_total,Standortquotient_bezirk,zehn_jahr_wachstum_bezirk)
 
-write.xlsx(df_angestellte_tg_section_bezirke_xlsx, "Daten/daten_bezirk_use.xlsx")
+saveRDS(df_angestellte_tg_section_bezirke_xlsx, "Daten/daten_bezirk_use.rds")
 
 
 df_angestellte_tg_section_xlsx <- df_angestellte_tg_section %>%
   select(jahr,gemeinde,bezirk, noga_section_code, noga_section_text_lower,beschaeftigte_total,Standortquotient_gemeinde,zehn_jahr_wachstum_gemeinde)
 
-write.xlsx(df_angestellte_tg_section_xlsx, "Daten/daten_gemeinde_use.xlsx")
+saveRDS(df_angestellte_tg_section_xlsx, "Daten/daten_gemeinde_use.rds")
 
 
 df_angestellte_tg_c_xlsx <- df_angestellte_tg_c %>%
   select(jahr, noga_zweisteller_code, noga_zweisteller_text,beschaeftigte_total,Standortquotient_tg_c,zehn_jahr_wachstum_tg)
 
-write.xlsx(df_angestellte_tg_c_xlsx, "Daten/daten_sectorC_use.xlsx")
+saveRDS(df_angestellte_tg_c_xlsx, "Daten/daten_sectorC_use.rds")
 
 max_year <- max(df_angestellte_tg_section_xlsx$jahr, na.rm = TRUE)
 min_year <- max_year - 10
