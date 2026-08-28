@@ -1,14 +1,12 @@
 rm(list=ls())
 
 # Source all R files from the R directory
-sapply(list.files("/r-proj/stat/ogd/branchenstruktur/Beschäftigte nach NOGA nach Gemeinde/App/R/",
-                  pattern = "\\.R$", full.names = TRUE), source)
+sapply(list.files("R/", pattern = "\\.R$", full.names = TRUE), source)
 
-daten_kanton <- read_xlsx("Daten/daten_kanton_use.xlsx")
-daten_bezirk <- read_xlsx("Daten/daten_bezirk_use.xlsx")
-daten_gemeinde <- read_xlsx("Daten/daten_gemeinde_use.xlsx",
-                            col_types = c("numeric", "text", "text", "text", "text", "numeric", "numeric", "numeric"))
-daten_sectorC <- read_xlsx("Daten/daten_sectorC_use.xlsx")
+daten_kanton <- readRDS("Daten/daten_kanton_use.rds")
+daten_bezirk <- readRDS("Daten/daten_bezirk_use.rds")
+daten_gemeinde <- readRDS("Daten/daten_gemeinde_use.rds")
+daten_sectorC <- readRDS("Daten/daten_sectorC_use.rds")
 
 # Define years for use in UI
 max_year <- max(daten_kanton$jahr, na.rm = TRUE)
@@ -216,11 +214,7 @@ db_content <- div(
           width = 12,
           div(
             class = "lesebeispiel",
-            HTML(paste0('<p>Die Visualisierung zeigt, </p><ul><li>welches die <strong>grössten</strong> Branchen im Kanton Thurgau sind (Je grösser der Bubble, desto mehr Beschäftigte arbeiten in der Branche. Die drei grössten Branchen sind schwarz umrandet.)</li>
-                                      <li>welches die <strong>wachstumsstärksten</strong>  Branchen im Kanton Thurgau sind (Je weiter oben der Bubble, desto stärker ist die Branche in den letzten Jahren gewachsen.)</li>
-                                      <li>welches die Branchen sind, die im Kanton Thurgau <strong>vergleichsweise stark vertreten</strong> sind (Je weiter rechts der Bubble, desto stärker ist die Branche im Vergleich zur Schweiz vertreten. Ein Standortquotienten von über 1 bedeutet: In dieser Branche arbeiten im Kanton Thurgau verhältnismässig mehr Beschäftigte als in der Gesamtschweiz).</li></ul>
-                                      <p class="secondp">Im <strong>oberen rechten Quadranten</strong> sind die <strong>Wachstumsbranchen</strong> dargestellt, die im Kanton Thurgau im Vergleich zur Gesamtschweiz <strong>stärker vertreten</strong> sind.</p><br>
-                        <p><strong>Lesebeispiel:</strong> Das Gesundheits- und Sozialwesen im Kanton Thurgau hatte im Jahr ', max_year,' 23\'033 Beschäftigte. Es gehört zu den drei grössten Branchen im Thurgau (grosser Bubble, schwarz umrandet). Es ist in den letzten Jahren stark gewachsen (+2.8 % im Schnitt der Jahre ', min_year, '-', max_year,'). Im Vergleich zur Gesamtschweiz arbeiten im Thurgau überdurchschnittlich viele Beschäftigte in dieser Branche (Standortquotient von 1,06).'))
+            render_lesebeispiel_tg(datasets_TG[["Thurgau"]], max_year, min_year)
           )
         )
       )
