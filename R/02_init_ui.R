@@ -11,11 +11,13 @@ capitalize_first <- function(x) {
 # actual largest branch in `data`, so the text stays correct every year
 # without manual edits (data must have columns name, current, x, y, z).
 render_lesebeispiel_tg <- function(data, max_year, min_year) {
-  top <- data[order(-data$z), ][1, ]
+  # top <- data[order(-data$z), ][1, ]
+  top <- data |>
+    filter(name == "Gesundheits- und Sozialwesen")
 
-  growth_direction <- if (top$y >= 0) "stark gewachsen" else "zurückgegangen"
-  vertretung <- if (top$x > 1) "überdurchschnittlich" else "unterdurchschnittlich"
-  growth_sign <- if (top$y >= 0) "+" else ""
+  growth_direction <- if (top$y == 0) "gleich geblieben" else if (top$y > 0) "stark gewachsen" else "zurückgegangen"
+  vertretung <- if (top$x == 1) "genau durchschnittlich" else if (top$x > 1) "überdurchschnittlich" else "unterdurchschnittlich"
+  growth_sign <- if (top$y > 0) "+" else ""
 
   HTML(paste0(
     '<p>Die Visualisierung zeigt, </p><ul><li>welches die <strong>grössten</strong> Branchen im Kanton Thurgau sind (Je grösser der Bubble, desto mehr Beschäftigte arbeiten in der Branche. Die drei grössten Branchen sind schwarz umrandet.)</li>
