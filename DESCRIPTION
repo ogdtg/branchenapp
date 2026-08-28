@@ -1,0 +1,31 @@
+Package: branchenapp
+Type: Shiny App
+Title: Branchenstruktur Kanton Thurgau
+Version: 1.0.0
+Authors@R: person("Amt für Daten und Statistik", "Kanton Thurgau",
+    email = "felixlorenz18@gmail.com", role = c("aut", "cre"))
+Maintainer: Amt für Daten und Statistik Kanton Thurgau <felixlorenz18@gmail.com>
+Description: A Shiny dashboard visualizing the employment structure
+    (Branchenstruktur) of the canton of Thurgau, Switzerland, based on open
+    government data (OGD) from the Bundesamt für Statistik (STATENT). For
+    each NOGA economic sector it shows employee counts, ten-year growth, and
+    the location quotient relative to Switzerland as a whole, at the Kanton,
+    Bezirk and Gemeinde level.
+License: proprietary
+Encoding: UTF-8
+URL: https://github.com/ogdtg/branchenapp
+BugReports: https://github.com/ogdtg/branchenapp/issues
+Imports:
+    bs4Dash,
+    dplyr,
+    highcharter,
+    shiny,
+    shinybrowser,
+    shinyjs
+Suggests:
+    BFS,
+    openxlsx,
+    readxl,
+    stringr,
+    TGexcel,
+    tgAPI
