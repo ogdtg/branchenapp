@@ -6,3 +6,4 @@
 ^rsconnect$
 ^manifest\.json$
 ^README\.md$
+^\.rscignore$
