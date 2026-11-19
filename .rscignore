@@ -5,6 +5,7 @@ data-raw
 dev
 man
 README.md
+README.txt
 branchenapp.Rproj
 .Rbuildignore
 .gitignore
