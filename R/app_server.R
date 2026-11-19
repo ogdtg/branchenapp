@@ -4,6 +4,7 @@
 #' @noRd
 app_server <- function(input, output, session) {
   app_data <- load_branchen_data()
-  lapply(names(ebenen), function(level) mod_branchen_server(level, level, app_data))
-  invisible(NULL)
+  for (level in names(ebenen())) {
+    mod_branchen_server(level, level, app_data)
+  }
 }

@@ -1,12 +1,3 @@
-#' @noRd
-url_webartikel <- "https://statistik.tg.ch/themen-und-daten/wirtschaft-und-arbeit/arbeit-und-erwerb/beschaeftigte.html/6019/l/de/"
-
-#' Externer Link im Button-Stil
-#' @noRd
-link_button <- function(label, href, icon = NULL) {
-  tags$a(class = "btn btn-outline-primary", href = href, target = "_blank", rel = "noopener", icon, label)
-}
-
 #' Die Shiny-Applikation UI
 #'
 #' @param request Interner Shiny-Parameter.
@@ -45,19 +36,6 @@ app_ui <- function(request) {
             "Gemeinden",
             mod_branchen_ui("gemeinde", choices = names(app_data$daten$gemeinde), label = "Gemeinde")
           )
-        )
-      ),
-      div(
-        class = "weitere-infos",
-        h4("Weitere Informationen"),
-        div(
-          class = "d-flex flex-wrap gap-2",
-          link_button("Webartikel zum Thema", url_webartikel),
-          link_button("Daten als OGD", "https://data.tg.ch/explore/dataset/sk-stat-150/information/"),
-          link_button("Wirtschaftsstatistiken", "https://statistik.tg.ch/themen-und-daten/wirtschaft-und-arbeit.html/4433"),
-          link_button("Wirtschaftsbarometer", "https://wirtschaftsbarometer.tg.ch/"),
-          link_button("Glossar", "https://statistik.tg.ch/glossar/glossar.html/6736"),
-          link_button("GitHub", "https://github.com/ogdtg/branchenapp", icon("github"))
         )
       )
     ),

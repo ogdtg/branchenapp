@@ -11,4 +11,5 @@
 .chart-text { display: block; margin-bottom: 0.5rem; }
 .bslib-card .card-header .echr-title-text { font-size: 1.1rem; }
 .help-icon { margin-left: 4px; color: #979797; cursor: help; }
-.weitere-infos { padding-top: 40px; }
+.bslib-card .card-footer { background-color: transparent; }
+.bslib-card .card-footer a { color: var(--brand-blue); }

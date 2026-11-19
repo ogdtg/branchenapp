@@ -35,6 +35,55 @@ chart_colors <- function(level) {
   }
 }
 
+#' Quadranten-Beschriftung im Bubble-Chart
+#' @noRd
+quadrant_label <- function(hc, x, y, text, align, color, vertical = NULL) {
+  lbl <- list(point = list(x = x, y = y, xAxis = 0, yAxis = 0), text = text, align = align, y = 20)
+  if (!is.null(vertical)) lbl$verticalAlign <- vertical
+  hc_add_annotation(
+    hc,
+    labelOptions = list(
+      backgroundColor = "transparent", borderWidth = 0, useHTML = TRUE,
+      crop = FALSE, overflow = "allow", padding = 0,
+      style = list(fontSize = "13px", color = color, fontWeight = "bold")
+    ),
+    labels = list(lbl)
+  )
+}
+
+#' Leere Serie als Legendeneintrag (Dumbbell, eigene Symbole via labelFormatter)
+#' @noRd
+legend_dummy <- function(hc, name, index) {
+  hc_add_series(
+    hc, name = name, type = "scatter", data = list(c(NA, NA)),
+    marker = list(enabled = FALSE), showInLegend = TRUE, legendIndex = index
+  )
+}
+
+#' Leere Serie als quadratischer Legendeneintrag (Balken)
+#' @noRd
+legend_square <- function(hc, name, color, index) {
+  hc_add_series(
+    hc, name = name, type = "scatter", data = list(), color = color,
+    showInLegend = TRUE, marker = list(symbol = "square", radius = 8), legendIndex = index
+  )
+}
+
+#' Datenpunkt im Bubble-Chart (Top 3 schwarz umrandet und beschriftet)
+#' @noRd
+bubble_punkt <- function(x, y, z, name, color, is_top3) {
+  list(
+    x = x, y = y, z = z, name = name, color = color,
+    marker = if (is_top3) list(lineWidth = 1, lineColor = "#000000") else list(lineWidth = 1),
+    dataLabels = list(
+      enabled = is_top3,
+      format = "{point.name}",
+      style = list(color = "#000000", fontWeight = "bold", fontSize = "11px", textOutline = "2px white"),
+      verticalAlign = "bottom", x = 0, y = 10
+    )
+  )
+}
+
 #' Bubble-Chart (Übersicht): Standortquotient x Wachstum, Grösse = Beschäftigte
 #'
 #' @param data Datensatz aus [prepare_chart_data()].
@@ -65,34 +114,6 @@ create_bubble_chart <- function(data, level, max_year, min_year, legend_text) {
     arrange(desc(z)) |>
     mutate(is_top3 = seq_along(z) <= 3)
 
-  punkte <- lapply(seq_len(nrow(data)), function(i) {
-    d <- data[i, ]
-    list(
-      x = d$x, y = d$y, z = d$z, name = d$name, color = d$color,
-      marker = if (d$is_top3) list(lineWidth = 1, lineColor = "#000000") else list(lineWidth = 1),
-      dataLabels = list(
-        enabled = d$is_top3,
-        format = "{point.name}",
-        style = list(color = "#000000", fontWeight = "bold", fontSize = "11px", textOutline = "2px white"),
-        verticalAlign = "bottom", x = 0, y = 10
-      )
-    )
-  })
-
-  quadrant_label <- function(hc, x, y, text, align, color, vertical = NULL) {
-    lbl <- list(point = list(x = x, y = y, xAxis = 0, yAxis = 0), text = text, align = align, y = 20)
-    if (!is.null(vertical)) lbl$verticalAlign <- vertical
-    hc_add_annotation(
-      hc,
-      labelOptions = list(
-        backgroundColor = "transparent", borderWidth = 0, useHTML = TRUE,
-        crop = FALSE, overflow = "allow", padding = 0,
-        style = list(fontSize = "13px", color = color, fontWeight = "bold")
-      ),
-      labels = list(lbl)
-    )
-  }
-
   highchart() |>
     hc_chart(type = "bubble", height = 600, style = list(fontFamily = "Arial")) |>
     hc_xAxis(
@@ -119,7 +140,10 @@ create_bubble_chart <- function(data, level, max_year, min_year, legend_text) {
     hc_plotOptions(bubble = list(
       opacity = 0.9, minSize = "0.3%", maxSize = "20%", marker = list(lineWidth = 1)
     )) |>
-    hc_series(list(showInLegend = FALSE, name = "", data = punkte)) |>
+    hc_series(list(
+      showInLegend = FALSE, name = "",
+      data = unname(Map(bubble_punkt, data$x, data$y, data$z, data$name, data$color, data$is_top3))
+    )) |>
     quadrant_label(minx, maxy, "Beschäftigung gewachsen /<br>Branche schwach vertreten", "left", cols$label[["tl"]]) |>
     quadrant_label(maxx, maxy, "Beschäftigung gewachsen /<br>Branche stark vertreten", "right", cols$label[["tr"]]) |>
     quadrant_label(minx, miny + 0.5, "Beschäftigung gesunken /<br>Branche schwach vertreten", "left", cols$label[["bl"]], "bottom") |>
@@ -153,13 +177,6 @@ create_dumbbell_chart <- function(data, max_year, min_year) {
       highColor = color,
       lowColor = ifelse(sinkt, rueckgang[["low"]], wachstum[["low"]])
     )
-
-  legend_dummy <- function(hc, name, index) {
-    hc_add_series(
-      hc, name = name, type = "scatter", data = list(c(NA, NA)),
-      marker = list(enabled = FALSE), showInLegend = TRUE, legendIndex = index
-    )
-  }
 
   highchart() |>
     hc_chart(type = "dumbbell", inverted = TRUE, height = 450, marginRight = 20,
@@ -230,13 +247,6 @@ create_bar_chart <- function(data, level, max_year) {
       color = ifelse(y > 1, cols$over, cols$under),
       borderColor = color
     )
-
-  legend_square <- function(hc, name, color, index) {
-    hc_add_series(
-      hc, name = name, type = "scatter", data = list(), color = color,
-      showInLegend = TRUE, marker = list(symbol = "square", radius = 8), legendIndex = index
-    )
-  }
 
   highchart() |>
     hc_chart(type = "bar", height = 450, style = list(fontFamily = "Arial")) |>

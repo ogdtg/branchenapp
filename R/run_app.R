@@ -13,6 +13,8 @@ run_app <- function(
   uiPattern = "/",
   ...
 ) {
+  # Daten beim Prozessstart laden, damit der erste Besuch nicht wartet
+  load_branchen_data()
   with_golem_options(
     app = shinyApp(
       ui = app_ui,

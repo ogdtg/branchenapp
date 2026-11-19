@@ -9,6 +9,27 @@ capitalize_first <- function(x) {
   paste0(toupper(substring(x, 1, 1)), substring(x, 2))
 }
 
+#' Texte aller drei Diagramme einer Ebene
+#' @noRd
+chart_texte <- function(level, gebiet, min_year, max_year) {
+  sapply(c("bubble", "dumbbell", "bar"), chart_text, level = level, gebiet = gebiet,
+         min_year = min_year, max_year = max_year, simplify = FALSE)
+}
+
+#' Beschreibung zum Standortquotienten-Balkendiagramm
+#' @param branchen Bezeichnung der Branchen im Satz.
+#' @param wo Ortsangabe, z. B. "im Bezirk Arbon".
+#' @noRd
+sq_text <- function(level, branchen, wo) {
+  farben <- if (level == "c_sektor") c("grünen", "orangen") else c("blauen", "violetten")
+  paste0(
+    "Die ", farben[1], " Balken zeigen ", branchen, ", in denen ", wo,
+    " verhältnismässig mehr Beschäftigte arbeiten als in der Gesamtschweiz (Standortquotient > 1). ",
+    "Die ", farben[2], " Balken zeigen ", branchen, ", die ", wo,
+    " im Vergleich zur Gesamtschweiz schwächer vertreten sind (Standortquotient < 1)."
+  )
+}
+
 #' Titel und Beschreibung pro Diagramm
 #'
 #' @param chart `bubble`, `dumbbell` oder `bar`.
@@ -19,14 +40,6 @@ capitalize_first <- function(x) {
 chart_text <- function(chart, level, gebiet, min_year, max_year) {
   zeitraum <- paste0(min_year, "-", max_year)
   ordnung <- paste0(" im Zehnjahreszeitraum von ", min_year, " bis ", max_year, ". ")
-  sq_text <- function(branchen, wo) paste0(
-    "Die ", if (level == "c_sektor") "grünen" else "blauen", " Balken zeigen ", branchen,
-    ", in denen ", wo, " verhältnismässig mehr Beschäftigte arbeiten als in der Gesamtschweiz ",
-    "(Standortquotient > 1). Die ", if (level == "c_sektor") "orangen" else "violetten",
-    " Balken zeigen ", branchen, ", die ", wo,
-    " im Vergleich zur Gesamtschweiz schwächer vertreten sind (Standortquotient < 1)."
-  )
-
   if (level == "kanton") {
     switch(chart,
       bubble = list(title = "Die Branchenstruktur im Kanton Thurgau", text = NULL),
@@ -37,7 +50,7 @@ chart_text <- function(chart, level, gebiet, min_year, max_year) {
       ),
       bar = list(
         title = "Die Grösse der Thurgauer Branchen im Vergleich zur Gesamtschweiz",
-        text = sq_text("Branchen", "im Kanton Thurgau")
+        text = sq_text(level, "Branchen", "im Kanton Thurgau")
       )
     )
   } else if (level == "c_sektor") {
@@ -55,7 +68,7 @@ chart_text <- function(chart, level, gebiet, min_year, max_year) {
       ),
       bar = list(
         title = "Die Grösse der Subbranchen des verarbeitenden Gewerbes im Vergleich mit der Schweiz",
-        text = sq_text("die Subbranchen des verarbeitenden Gewerbes", "im Kanton Thurgau")
+        text = sq_text(level, "die Subbranchen des verarbeitenden Gewerbes", "im Kanton Thurgau")
       )
     )
   } else {
@@ -74,7 +87,7 @@ chart_text <- function(chart, level, gebiet, min_year, max_year) {
       ),
       bar = list(
         title = paste0("Die Grösse der Branchen ", wo, " im Vergleich zur Gesamtschweiz"),
-        text = sq_text("die Branchen", wo)
+        text = sq_text(level, "die Branchen", wo)
       )
     )
   }
