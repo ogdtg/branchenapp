@@ -1,0 +1,12 @@
+# Dateien, die beim Publizieren auf Posit Connect NICHT hochgeladen werden.
+# Für die App nötig sind nur: app.R, DESCRIPTION, NAMESPACE, R/, inst/
+tests
+data-raw
+dev
+man
+README.md
+README.txt
+branchenapp.Rproj
+.Rbuildignore
+.gitignore
+.rscignore

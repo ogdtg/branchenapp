@@ -1,8 +1,8 @@
-README.txt
 .Rproj.user
 .Rhistory
+.RData
 .Rdata
 .httr-oauth
 .DS_Store
 .quarto
-rsconnect/*
+rsconnect/

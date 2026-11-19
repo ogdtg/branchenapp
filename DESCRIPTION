@@ -1,31 +1,39 @@
 Package: branchenapp
-Type: Shiny App
 Title: Branchenstruktur Kanton Thurgau
-Version: 1.0.0
+Version: 2.1.0
 Authors@R: person("Amt für Daten und Statistik", "Kanton Thurgau",
     email = "felixlorenz18@gmail.com", role = c("aut", "cre"))
-Maintainer: Amt für Daten und Statistik Kanton Thurgau <felixlorenz18@gmail.com>
-Description: A Shiny dashboard visualizing the employment structure
-    (Branchenstruktur) of the canton of Thurgau, Switzerland, based on open
-    government data (OGD) from the Bundesamt für Statistik (STATENT). For
-    each NOGA economic sector it shows employee counts, ten-year growth, and
-    the location quotient relative to Switzerland as a whole, at the Kanton,
-    Bezirk and Gemeinde level.
+Description: Shiny-Dashboard (golem) zur Beschäftigtenstruktur des Kantons
+    Thurgau auf Basis der STATENT-Daten des Bundesamts für Statistik. Pro
+    NOGA-Branche werden Grösse, Zehnjahreswachstum und Standortquotient auf
+    Ebene Kanton, Bezirk und Gemeinde dargestellt. Die Daten werden
+    beim Start direkt von data.tg.ch (OGD) geladen und gecacht. UI im Thurgauer
+    Designstil via 'tgdashboard'.
 License: proprietary
 Encoding: UTF-8
+Language: de-CH
 URL: https://github.com/ogdtg/branchenapp
 BugReports: https://github.com/ogdtg/branchenapp/issues
+Depends:
+    R (>= 4.1.0)
 Imports:
-    bs4Dash,
+    bslib (>= 0.9.0),
+    config,
     dplyr,
+    golem,
     highcharter,
     shiny,
-    shinybrowser,
-    shinyjs
+    shinycssloaders,
+    shinyWidgets,
+    stats,
+    tgdashboard,
+    tools,
+    utils,
+    writexl
+Remotes:
+    ogdtg/tgdashboard
 Suggests:
-    BFS,
-    openxlsx,
-    readxl,
-    stringr,
-    TGexcel,
-    tgAPI
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Config/roxygen2/version: 8.1.1
+RoxygenNote: 7.3.3

@@ -1,0 +1,15 @@
+/* Ergänzungen zum tgdashboard-Branding (inst/_brand.yml in tgdashboard) */
+.full-bleed {
+  background-color: var(--brand-lightblue);
+  padding-top: 16px;
+  padding-bottom: 32px;
+}
+.full-bleed > .tab-content { padding-top: 1.5rem; }
+.full-bleed .bslib-card { margin-bottom: 1.5rem; }
+.gebiet-auswahl { max-width: 360px; margin-bottom: 1rem; }
+.zoom-titel { margin: 1.5rem 0 1rem; }
+.chart-text { display: block; margin-bottom: 0.5rem; }
+.bslib-card .card-header .echr-title-text { font-size: 1.1rem; }
+.help-icon { margin-left: 4px; color: #979797; cursor: help; }
+.bslib-card .card-footer { background-color: transparent; }
+.bslib-card .card-footer a { color: var(--brand-blue); }
