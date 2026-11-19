@@ -1,8 +1,7 @@
-# This script rebuilds the app's data files and must be run once whenever the
-# underlying OGD (Open Government Data) source datasets are updated.
-# It writes:
-#  - Daten/*_use.rds     -> fast-loading data used by the Shiny app itself
-#  - Daten/*.xlsx        -> nicely formatted workbooks offered for download in the app
+# Baut die Daten der App neu auf. Einmal ausführen, wenn die OGD-Quelldaten
+# aktualisiert wurden (Arbeitsverzeichnis = Paket-Root). Schreibt:
+#  - inst/extdata/*_use.rds -> von der App gelesene Daten
+#  - inst/extdata/*.xlsx     -> formatierte Excel-Dateien für den Download
 
 # Load all necessary packages
 library(dplyr)
@@ -47,7 +46,7 @@ df_angestellte_ch <- df_angestellte_ch %>%
 
 # Mapping zwischen NOGA-Codes erstellen
 
-match_section <- read_xlsx("Daten/match_zweisteller_sektion.xlsx")
+match_section <- read_xlsx("data-raw/match_zweisteller_sektion.xlsx")
 
 match_section <- match_section %>%
   mutate(noga_zweisteller_code = as.numeric(noga_zweisteller_code))
@@ -190,24 +189,24 @@ df_angestellte_tg_c$jahr <- as.numeric(df_angestellte_tg_c$jahr)
 df_angestellte_tg_section_tg_xlsx <- df_angestellte_tg_section_tg %>%
   select(jahr,noga_section_code,noga_section_text_lower,beschaeftigte_total,Standortquotient_tg,zehn_jahr_wachstum_tg)
 
-saveRDS(df_angestellte_tg_section_tg_xlsx, "Daten/daten_kanton_use.rds")
+saveRDS(df_angestellte_tg_section_tg_xlsx, "inst/extdata/daten_kanton_use.rds")
 
 df_angestellte_tg_section_bezirke_xlsx <- df_angestellte_tg_section_bezirk %>%
   select(jahr,bezirk, noga_section_code,noga_section_text_lower,beschaeftigte_total,Standortquotient_bezirk,zehn_jahr_wachstum_bezirk)
 
-saveRDS(df_angestellte_tg_section_bezirke_xlsx, "Daten/daten_bezirk_use.rds")
+saveRDS(df_angestellte_tg_section_bezirke_xlsx, "inst/extdata/daten_bezirk_use.rds")
 
 
 df_angestellte_tg_section_xlsx <- df_angestellte_tg_section %>%
   select(jahr,gemeinde,bezirk, noga_section_code, noga_section_text_lower,beschaeftigte_total,Standortquotient_gemeinde,zehn_jahr_wachstum_gemeinde)
 
-saveRDS(df_angestellte_tg_section_xlsx, "Daten/daten_gemeinde_use.rds")
+saveRDS(df_angestellte_tg_section_xlsx, "inst/extdata/daten_gemeinde_use.rds")
 
 
 df_angestellte_tg_c_xlsx <- df_angestellte_tg_c %>%
   select(jahr, noga_zweisteller_code, noga_zweisteller_text,beschaeftigte_total,Standortquotient_tg_c,zehn_jahr_wachstum_tg)
 
-saveRDS(df_angestellte_tg_c_xlsx, "Daten/daten_sectorC_use.rds")
+saveRDS(df_angestellte_tg_c_xlsx, "inst/extdata/daten_sectorC_use.rds")
 
 max_year <- max(df_angestellte_tg_section_xlsx$jahr, na.rm = TRUE)
 min_year <- max_year - 10
@@ -234,7 +233,7 @@ create_table_style (
 setColWidths(wb_kanton, paste0("Kanton Thurgau (",min_year,"-",max_year, ")"), cols = 3, widths = 57)
 setColWidths(wb_kanton, paste0("Kanton Thurgau (",min_year,"-",max_year, ")"), cols = 6, widths = 17)
 
-saveWorkbook(wb_kanton, "Daten/daten_kanton.xlsx", overwrite = T)
+saveWorkbook(wb_kanton, "inst/extdata/daten_kanton.xlsx", overwrite = T)
 
 
 
@@ -262,7 +261,7 @@ setColWidths(wb_bezirk, paste0("Bezirke (",min_year,"-",max_year, ")"), cols = 4
 setColWidths(wb_bezirk, paste0("Bezirke (",min_year,"-",max_year, ")"), cols = 7, widths = 17)
 
 
-saveWorkbook(wb_bezirk, "Daten/daten_bezirk.xlsx", overwrite = T)
+saveWorkbook(wb_bezirk, "inst/extdata/daten_bezirk.xlsx", overwrite = T)
 
 
 
@@ -289,7 +288,7 @@ setColWidths(wb_gemeinde, paste0("Gemeinde (",min_year,"-",max_year, ")"), cols 
 setColWidths(wb_gemeinde, paste0("Gemeinde (",min_year,"-",max_year, ")"), cols = 5, widths = 57)
 setColWidths(wb_gemeinde, paste0("Gemeinde (",min_year,"-",max_year, ")"), cols = 8, widths = 17)
 
-saveWorkbook(wb_gemeinde, "Daten/daten_gemeinde.xlsx", overwrite = T)
+saveWorkbook(wb_gemeinde, "inst/extdata/daten_gemeinde.xlsx", overwrite = T)
 
 
 
@@ -314,4 +313,4 @@ create_table_style (
 setColWidths(wb_sektorC, paste0("Verarbeit. Gewerbe (",min_year,"-",max_year, ")"), cols = 3, widths = 57)
 setColWidths(wb_sektorC, paste0("Verarbeit. Gewerbe (",min_year,"-",max_year, ")"), cols = 6, widths = 17)
 
-saveWorkbook(wb_sektorC, "Daten/daten_sectorC.xlsx", overwrite = T)
+saveWorkbook(wb_sektorC, "inst/extdata/daten_sectorC.xlsx", overwrite = T)
