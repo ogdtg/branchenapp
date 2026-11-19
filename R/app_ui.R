@@ -51,12 +51,26 @@ app_ui <- function(request) {
 
 #' Externe Ressourcen (Favicon, inst/app/www/*.css)
 #'
-#' @importFrom golem add_resource_path favicon bundle_resources
+#' @importFrom golem add_resource_path bundle_resources
 #' @noRd
 golem_add_external_resources <- function() {
   add_resource_path("www", app_sys("app/www"))
   tags$head(
-    favicon(),
+    favicon_tags(),
     bundle_resources(path = app_sys("app/www"), app_title = "Branchenstruktur Kanton Thurgau")
+  )
+}
+
+#' Favicon-Links
+#'
+#' Relativer Pfad, damit es auch unter dem Unterpfad von Posit Connect
+#' (`/content/<guid>/` bzw. Vanity-URL) funktioniert. Der Versionsparameter
+#' verhindert, dass Browser ein früher gecachtes Icon weiterverwenden.
+#' @noRd
+favicon_tags <- function() {
+  href <- paste0("www/favicon.ico?v=", utils::packageVersion("branchenapp"))
+  tagList(
+    tags$link(rel = "icon", type = "image/x-icon", href = href),
+    tags$link(rel = "shortcut icon", type = "image/x-icon", href = href)
   )
 }

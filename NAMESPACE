@@ -2,26 +2,31 @@
 
 export(run_app)
 import(shiny)
-importFrom(dplyr,arrange)
-importFrom(dplyr,desc)
-importFrom(dplyr,mutate)
-importFrom(golem,add_resource_path)
-importFrom(golem,bundle_resources)
-importFrom(golem,favicon)
-importFrom(golem,with_golem_options)
-importFrom(highcharter,JS)
-importFrom(highcharter,hc_add_annotation)
-importFrom(highcharter,hc_add_series)
-importFrom(highcharter,hc_chart)
-importFrom(highcharter,hc_credits)
-importFrom(highcharter,hc_legend)
-importFrom(highcharter,hc_plotOptions)
-importFrom(highcharter,hc_series)
-importFrom(highcharter,hc_tooltip)
-importFrom(highcharter,hc_xAxis)
-importFrom(highcharter,hc_yAxis)
-importFrom(highcharter,highchart)
-importFrom(highcharter,highchartOutput)
-importFrom(highcharter,list_parse)
-importFrom(highcharter,renderHighchart)
+importFrom(dplyr,
+  arrange,
+  desc,
+  mutate
+)
+importFrom(golem,
+  add_resource_path,
+  bundle_resources,
+  with_golem_options
+)
+importFrom(highcharter,
+  JS,
+  hc_add_annotation,
+  hc_add_series,
+  hc_chart,
+  hc_credits,
+  hc_legend,
+  hc_plotOptions,
+  hc_series,
+  hc_tooltip,
+  hc_xAxis,
+  hc_yAxis,
+  highchart,
+  highchartOutput,
+  list_parse,
+  renderHighchart
+)
 importFrom(shiny,shinyApp)

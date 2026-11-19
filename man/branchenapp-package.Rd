@@ -19,5 +19,10 @@ Useful links:
 \author{
 \strong{Maintainer}: Amt für Daten und Statistik Kanton Thurgau \email{felixlorenz18@gmail.com}
 
+Authors:
+\itemize{
+  \item Amt für Daten und Statistik Kanton Thurgau \email{felixlorenz18@gmail.com}
+}
+
 }
 \keyword{internal}
